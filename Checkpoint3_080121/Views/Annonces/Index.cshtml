@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Checkpoint3_080121.Models.Annonce>
+
+@{
+    ViewData["Title"] = "Annonces";
+}
+
+<h1>Annonces récentes</h1>
+
+<p>
+    <a asp-action="Create">Ajouter une annonce</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Numéro
+            </th>
+            <th>
+                Titre
+            </th>
+            <th>
+                Détails
+            </th>
+            <th>
+                Prix
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price) €
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editer</a> |
+                <a asp-action="Modify" asp-route-id="@item.Id">Modifier</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
